@@ -1,0 +1,15 @@
+--- networking/ether-wake.c
++++ networking/ether-wake.c
+@@ -123,10 +124,10 @@
+ 	eap = ether_aton_r(hostid, eaddr);
+ 	if (eap) {
+ 		bb_debug_msg("The target station address is %s\n\n", ether_ntoa_r(eap, ether_buf));
+-#if !defined(__UCLIBC_MAJOR__) \
++#if !defined(__BIONIC__) && (!defined(__UCLIBC_MAJOR__) \
+  || __UCLIBC_MAJOR__ > 0 \
+  || __UCLIBC_MINOR__ > 9 \
+- || (__UCLIBC_MINOR__ == 9 && __UCLIBC_SUBLEVEL__ >= 30)
++ || (__UCLIBC_MINOR__ == 9 && __UCLIBC_SUBLEVEL__ >= 30))
+ 	} else if (ether_hostton(hostid, eaddr) == 0) {
+ 		bb_debug_msg("Station address for hostname %s is %s\n\n", hostid, ether_ntoa_r(eaddr, ether_buf));
+ #endif

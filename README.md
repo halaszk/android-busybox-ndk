@@ -13,7 +13,7 @@ I recently discovered that a number [[1](http://lists.busybox.net/pipermail/busy
     cp configs/android_ndk_defconfig .config
     
     # add arm-linux-androideabi-* to your PATH
-    export PATH="$PATH:/path/to/your/android-ndk/android-ndk-r7b/toolchains/arm-linux-androideabi-4.4.3/prebuilt/linux-x86/bin/"
+    export PATH="$PATH:/path/to/your/android-ndk/android-ndk-r9c/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86/bin/"  (OR prebuilt/linux-x86_x64/bin if yours is 64BIT)
     # if android-ndk is not installed in /opt/android-ndk, edit SYSROOT= in .config
     xdg-open .config
     
@@ -26,7 +26,7 @@ This creates a busybox with the following applets:
 Using file *android\_ndk\_defconfigPlus* you additionally get following applets that are by default enabled for 'make defconfig':
 > acpid, ash, groups, id, mkdosfs, mkfs.vfat, nandump, nandwrite, sh, slattach, tty
 
-By **applying the included patches** to the busybox code-base (and config *android\_ndk\_config-w-patches*), you additionally get:
+By **applying the included patches** to the busybox code-base (and config *android\_ndk\_dori\_config*), you additionally get:
 > adjtimex, arping, bbconfig, brctl, date, df, ether-wake, fsck, fsck.minix, hostname, hush, inetd, ionice, ipcrm, ipcs, kbd\_mode, kill, killall, killall5, logread, microcom, mke2fs, mkfs.ext2, mkfs.minix, mkfs.reiser, mount, mountpoint, nameif, nslookup (with own resolver), pgrep, ping6, pivot_root, pkill, rdate, stat, swapon, swapoff, syslogd, traceroute6, ubi*, udhcpd, umount, watchdog, zcip
 
 (when cherry-picking certain patches you have to include all patches with a lower number as well, there are dependencies between them except for 050 and 051).
